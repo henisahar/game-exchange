@@ -127,15 +127,19 @@ export default class Signup extends Component {
       );
     }
     return (
+      
       <View style={styles.container}>
+      
         <View style={styles.imageContainer}>
           {imageUri ? (
             <Image source={{ uri: imageUri }} style={styles.image} />
           ) : (
             <Button
-              title="Select Profile Image"
-              onPress={this.handleImagePicker}
-            />
+            title="Select Profile Image"
+            onPress={this.handleImagePicker}
+            buttonStyle={styles.selectButton}
+            titleStyle={styles.buttonTitle}
+        />
           )}
         </View>
         <TextInput
@@ -187,14 +191,14 @@ export default class Signup extends Component {
         <Button
           color="#3740FE"
           title=" Signup"
+          buttonStyle={styles.selectButton}
           icon={<Icon name="md-person-add" size={15} color="white" />}
           onPress={() => this.handleSignUp()}
         />
-        <Text
-          style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('Login')}>
-          Already Registered? Click here to login
-        </Text>
+        <View style={styles.loginContainer}>
+  <Text style={styles.registeredText}>Already Registered? Click here to </Text>
+  <Text style={styles.loginText} onPress={() => this.props.navigation.navigate('Login')}>login</Text>
+</View>
       </View>
     );
   }
@@ -209,6 +213,23 @@ const styles = StyleSheet.create({
     padding: 35,
     backgroundColor: '#fff'
   },
+  loginContainer: {
+    flexDirection: 'row',
+    marginTop: 25,
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
+  registeredText: {
+    color: '#000000', // Black color
+    marginTop: 25,
+    textAlign: 'center'
+  },
+
+  selectButton: {
+    borderRadius: 20, // Adjust the value as needed to control the curvature
+    backgroundColor: '#FF0000', // Change the background color of the button
+  },
+  
   imageContainer: {
     alignItems: 'center',
     marginBottom: 20
@@ -227,10 +248,19 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   loginText: {
-    color: '#3740FE',
+    color: '#FF0000',
     marginTop: 25,
     textAlign: 'center'
   },
+  registerNowText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#FF0000', // Change the color to your desired color
+   
+    marginBottom: 40, // Adjust the spacing from the top
+    textDecorationLine: 'underline', // Underline the text
+  },
+
   preloader: {
     left: 0,
     right: 0,

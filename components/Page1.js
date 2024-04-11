@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ImageBackground, Button, Alert, ScrollView, Image,TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, Alert, ScrollView, Image, TouchableOpacity } from 'react-native';
 import firebase from '../database/firebase'; 
 import Icon from 'react-native-vector-icons/Entypo';
-
-const loginImage = require('../images/profile.jpg');
 
 class Page1 extends Component {
   constructor(props) {
@@ -87,47 +85,48 @@ class Page1 extends Component {
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <ImageBackground source={loginImage} style={styles.backgroundImage}>
-          <View style={styles.profileContainer}>
-            {userData && (
-              <View style={styles.profileImageContainer}>
-                {userData.imageUrl && (
-                  <Image
-                    source={{ uri: userData.imageUrl }}
-                    style={styles.profileImage}
-                  />
-                )}
-              </View>
-            )}
-            <Text style={styles.username}>{userData.displayName}</Text>
-            <View style={styles.userInfooContainer}>
-              <Icon name="location-pin" size={30} />
-              <Text style={styles.userState}>{userData.userState}</Text>
-            </View>
-            <View style={styles.line} />
-            <View style={styles.userInfoList}>
-              <View style={styles.userInfoContainer}>
-                <Icon name="email" size={30} />
-                <Text style={styles.userInfo}>{userData.email}</Text>
-              </View>
-              <View style={styles.userInfoContainer}>
-                <Icon name="phone" size={30} />
-                <Text style={styles.userInfo}>{userData.phoneNumber}</Text>
-              </View>
-              <View style={styles.userInfoContainer}>
-                <Icon name="heart" size={30} />
-                <Text style={styles.userInfo}>{userData.selectedGames}</Text>
-              </View>
-            </View>
-            <TouchableOpacity 
-  style={styles.deleteButton}
-  onPress={this.handleDeleteAccount}
->
-  <Text style={styles.deleteButtonText}>Delete Account</Text>
-</TouchableOpacity>
+    <View style={styles.rectangle}>
+  <View style={styles.profileContainer}>
+    {userData && (
+      <View style={styles.profileImageContainer}>
+        {userData.imageUrl && (
+          <Image
+            source={{ uri: userData.imageUrl }}
+            style={styles.profileImage}
+          />
+        )}
+      </View>
+    )}
+    <Text style={styles.username}>{userData.displayName}</Text>
+    <View style={styles.userInfooContainer}>
+      <Icon name="location-pin" size={30} />
+      <Text style={styles.userState}>{userData.userState}</Text>
+    </View>
+    <View style={styles.line} />
+    <View style={styles.userInfoList}>
+      <View style={styles.userInfoRectangle}>
+        <Icon name="email" size={30} />
+        <Text style={styles.userInfo}>{userData.email}</Text>
+      </View>
+      <View style={styles.userInfoRectangle}>
+        <Icon name="phone" size={30} />
+        <Text style={styles.userInfo}>{userData.phoneNumber}</Text>
+      </View>
+      <View style={styles.userInfoRectangle}>
+        <Icon name="heart" size={30} />
+        <Text style={styles.userInfo}>{userData.selectedGames}</Text>
+      </View>
+    </View>
+    <TouchableOpacity 
+      style={styles.deleteButton}
+      onPress={this.handleDeleteAccount}
+    >
+      <Text style={styles.deleteButtonText}>Delete Account</Text>
+    </TouchableOpacity>
+  </View>
+</View>
 
-          </View>
-        </ImageBackground>
+
       </ScrollView>
     );
   }
@@ -135,22 +134,33 @@ class Page1 extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-   
+    flexGrow: 1,
+    backgroundColor: '#FDF6EC',
   },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#FDF6EC',
   },
   errorContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#FDF6EC',
   },
+  userInfoRectangle: {
+    backgroundColor: '#E0E0E0',
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    height:50,
+  },
+  
+  
   loadingText: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -162,9 +172,16 @@ const styles = StyleSheet.create({
     color: 'red',
     textDecorationLine: 'underline',
   },
+  rectangle: {
+    backgroundColor: 'white',
+    margin: 20,
+    padding: 20,
+    borderRadius: 10,
+    elevation: 5,
+    marginTop:97,
+  },
   profileContainer: {
     alignItems: 'center',
-    padding: 20,
   },
   profileImageContainer: {
     marginTop: -100,
@@ -176,27 +193,23 @@ const styles = StyleSheet.create({
   },
   userInfoContainer: {
     flexDirection: 'row',
-    marginBottom: 30,
-    marginTop: 3,
+    marginBottom: 20,
   },
   userInfooContainer: {
     flexDirection: 'row',
-   
-    marginBottom: 30,
-    marginTop:3,
+    marginBottom: 20,
   },
-  userState:{
+  userState: {
     fontSize: 20,
     marginLeft: 10,
   },
   userInfo: {
     fontSize: 20,
     marginLeft: 10,
-  
   },
   username: {
     fontSize: 30,
-    color: 'white',
+    color: 'black',
     marginBottom: 10,
   },
   line: {
@@ -205,27 +218,19 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: '100%',
   },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-    width: '100%',
-    height: '100%',
-  },
   deleteButton: {
     backgroundColor: '#BA68C8',
     borderRadius: 10,
     paddingHorizontal: 20,
     paddingVertical: 10,
     marginTop: 20,
-    alignItems: 'center', 
+    alignItems: 'center',
   },
   deleteButtonText: {
     fontWeight: 'bold',
     fontSize: 18,
-    color: 'white', 
+    color: 'white',
   },
-  
 });
 
 export default Page1;

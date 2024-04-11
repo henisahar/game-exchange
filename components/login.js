@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Alert, ActivityIndicator, Image } from 'react-native'; // Import Image
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import firebase from '../database/firebase';
@@ -54,6 +54,11 @@ export default class Login extends Component {
     }
     return (
       <View style={styles.container}>
+        <Text style={styles.welcomeText}>Welcome to Game Exchange!</Text>
+        <Image
+          style={styles.logo}
+          source={require('../images/top.png')} // Provide the path to your image
+        />
         <TextInput
           style={styles.inputStyle}
           placeholder="Email"
@@ -72,6 +77,7 @@ export default class Login extends Component {
         <Button
           color="#3740FE"
           title=" Signin"
+          buttonStyle={styles.selectButton}
           icon={
             <Icon
               name="md-log-in"
@@ -82,11 +88,10 @@ export default class Login extends Component {
           onPress={() => this.userLogin()}
         />
 
-        <Text
-          style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('Signup')}>
-          Don't have account? Click here to signup
-        </Text>
+        <View style={styles.loginContainer}>
+          <Text style={styles.registeredText}>Already Registered? Click here to </Text>
+          <Text style={styles.loginText} onPress={() => this.props.navigation.navigate('Signup')}>signup</Text>
+        </View>
       </View>
     );
   }
@@ -101,6 +106,38 @@ const styles = StyleSheet.create({
     padding: 35,
     backgroundColor: '#fff'
   },
+  logo: {
+    width: 500, // Adjusted width to 100% of the container
+    height: 500, // Adjust the height as needed
+    resizeMode: 'contain', // Adjust the resizeMode as needed
+    alignSelf: 'stretch', // Adjusted alignSelf to stretch horizontally
+    marginTop: -490,
+    marginLeft:-100,// Adjusted marginTop to remove white space before the image
+    // Adjusted marginLeft as needed
+  },
+  welcomeText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+    color: '#333333',
+  },
+
+  selectButton: {
+    borderRadius: 20, // Adjust the value as needed to control the curvature
+    backgroundColor: '#FF0000', // Change the background color of the button
+  },
+  registeredText: {
+    color: '#000000', // Black color
+    marginTop: 25,
+    textAlign: 'center'
+  },
+  loginContainer: {
+    flexDirection: 'row',
+    marginTop: 25,
+    textAlign: 'center',
+    justifyContent: 'center'
+  },
   inputStyle: {
     width: '100%',
     marginBottom: 15,
@@ -110,7 +147,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   loginText: {
-    color: '#3740FE',
+    color: '#FF0000',
     marginTop: 25,
     textAlign: 'center'
   },

@@ -21,12 +21,10 @@ const Stack = createStackNavigator();
 function MyStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Signup"
+      initialRouteName="Login"
       screenOptions={{
         headerTitleAlign: 'center',
-        headerStyle: {
-          backgroundColor: '#3740FE',
-        },
+        
         headerTintColor: '#fff',
         headerTitleStyle: {
           fontWeight: 'bold',
@@ -35,12 +33,12 @@ function MyStack() {
       <Stack.Screen
         name="Signup"
         component={Signup}
-        options={{ title: 'Signup' }}
+        // Remove the title option
       />
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{ title: 'Login', headerLeft: null }}
+        options={{ headerLeft: null }}
       />
       <Stack.Screen
         name="Dashboard"

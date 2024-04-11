@@ -23,6 +23,15 @@ const Screen1 = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.circleContainer}>
+        <View style={[styles.circle1, { top: -6, left: 20 }]} />
+        <View style={[styles.circle2, { top: 70, right: 10 }]} />
+        <View style={[styles.circle3, { top: 120, left: 40 }]} />
+        <View style={[styles.circle4, { top: 180, right: 20 }]} />
+        <View style={[styles.circle5, { top: 30, left: 140 }]} />
+        <View style={[styles.circle6, { top: 10, right: 100 }]} />
+        <View style={[styles.circle7, { top: 170, right: 130 }]} />
+      </View>
       <Text style={styles.title}>Welcome to Exchange Games</Text>
 
       <View style={styles.boxContainer}>
@@ -59,6 +68,65 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingTop: 20,
   },
+  circleContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: -1,
+  },
+  circle1: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: '#C2A7D8',
+    position: 'absolute',
+  },
+  circle2: {
+    width: 40,
+    height: 40,
+    borderRadius: 50,
+    backgroundColor: '#EBC8F0',
+    position: 'absolute',
+  },
+  circle3: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: '#5CB287',
+    position: 'absolute',
+  },
+  circle4: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: '#ECBE5C',
+    position: 'absolute',
+  },
+  circle5: {
+    width: 40,
+    height: 40,
+    borderRadius: 50,
+    backgroundColor: '#EC6161',
+    position: 'absolute',
+  },
+  circle6: {
+    width: 80,
+    height: 80,
+    borderRadius: 50,
+    backgroundColor: '#ADBEF8',
+    position: 'absolute',
+  },
+  circle7: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    backgroundColor: '#A70D32',
+    position: 'absolute',
+  },
   title: {
     fontWeight: 'bold',
     fontSize: 35,
@@ -70,7 +138,7 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     flexDirection: 'column',
-    marginTop: 20,
+    marginTop: 100,
   },
   row: {
     flexDirection: 'row',
