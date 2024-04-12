@@ -1,0 +1,1 @@
+"Exchange Games" is a mobile application designed to facilitate the exchange of games among users. It is built using React Native for the frontend and Firebase serves as the backend. This app enables users to trade their games with others
