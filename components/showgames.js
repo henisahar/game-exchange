@@ -27,14 +27,14 @@ class ShowGames extends Component {
     return gamesRef.onSnapshot((querySnapshot) => {
       const games = [];
       querySnapshot.forEach((doc) => {
-        const { name, description, image, location, genre } = doc.data();
+        const { name, description, image, location, type } = doc.data();
         games.push({
           id: doc.id,
           name,
           description,
           image,
           location,
-          genre
+          type
         });
       });
       this.setState({ games, isLoading: false });
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#FDF6EC',
   },
   loadingContainer: {
     flex: 1,
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
    
     marginBottom: 40,
     fontSize: 24,
-    fontWeight: 'bold',
+
     marginBottom: 20,
   },
   list: {

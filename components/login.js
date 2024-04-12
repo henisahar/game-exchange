@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Alert, ActivityIndicator, Image } from 'react-native'; // Import Image
+import { StyleSheet, Text, View, TextInput, Alert, ActivityIndicator, Image } from 'react-native'; 
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import firebase from '../database/firebase';
@@ -40,9 +40,16 @@ export default class Login extends Component {
           })
           this.props.navigation.navigate('Main');
         })
-        .catch(error => this.setState({ errorMessage: error.message }))
+        .catch(error => {
+          this.setState({ 
+            isLoading: false,
+            errorMessage: 'Check your credentials and try again.' 
+          });
+          Alert.alert('Error', 'Check your credentials and try again.');
+        })
     }
   }
+  
 
   render() {
     if (this.state.isLoading) {
@@ -57,7 +64,7 @@ export default class Login extends Component {
         <Text style={styles.welcomeText}>Welcome to Game Exchange!</Text>
         <Image
           style={styles.logo}
-          source={require('../images/top.png')} // Provide the path to your image
+          source={require('../images/top.png')} 
         />
         <TextInput
           style={styles.inputStyle}
@@ -104,16 +111,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     padding: 35,
-    backgroundColor: '#fff'
+    backgroundColor: '#FDF6EC',
   },
   logo: {
-    width: 500, // Adjusted width to 100% of the container
-    height: 500, // Adjust the height as needed
-    resizeMode: 'contain', // Adjust the resizeMode as needed
-    alignSelf: 'stretch', // Adjusted alignSelf to stretch horizontally
+    width: 500, 
+    height: 500, 
+    resizeMode: 'contain', 
+    alignSelf: 'stretch', 
     marginTop: -490,
-    marginLeft:-100,// Adjusted marginTop to remove white space before the image
-    // Adjusted marginLeft as needed
+    marginLeft:-100,
+    
   },
   welcomeText: {
     fontSize: 20,
@@ -124,11 +131,11 @@ const styles = StyleSheet.create({
   },
 
   selectButton: {
-    borderRadius: 20, // Adjust the value as needed to control the curvature
-    backgroundColor: '#FF0000', // Change the background color of the button
+    borderRadius: 20, 
+    backgroundColor: '#FF0000', 
   },
   registeredText: {
-    color: '#000000', // Black color
+    color: '#000000', 
     marginTop: 25,
     textAlign: 'center'
   },

@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import * as Font from 'expo-font';
+
 
 const Screen1 = () => {
+
   const navigation = useNavigation();
 
   const navigateToProfile = () => {
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: 'white',
     paddingTop: 20,
+    backgroundColor: '#FDF6EC',
   },
   circleContainer: {
     position: 'absolute',
@@ -128,13 +132,17 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   title: {
-    fontWeight: 'bold',
+    fontFamily: 'System', // Use system font
+    fontSize: 16,
+
+   
     fontSize: 35,
-    color: '#5856D6',
+    color: '#BA68C8',
     textAlign: 'center',
     textDecorationLine: 'underline',
     marginBottom: 40,
     margin: 40,
+
   },
   boxContainer: {
     flexDirection: 'column',

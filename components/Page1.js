@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button, Alert, ScrollView, Image, TouchableOpac
 import firebase from '../database/firebase'; 
 import Icon from 'react-native-vector-icons/Entypo';
 
+
 class Page1 extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +25,7 @@ class Page1 extends Component {
       const docSnapshot = await userRef.get();
 
       if (docSnapshot.exists) {
-        // If the document exists, update the state with user data
+        
         const userData = docSnapshot.data();
         this.setState({ userData, isLoading: false });
       } else {
@@ -136,6 +137,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#FDF6EC',
+    
   },
   loadingContainer: {
     flex: 1,

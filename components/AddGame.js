@@ -162,10 +162,12 @@ export default class AddGame extends Component {
           />
         </View>
         <TextInput
-          style={styles.inputStyle}
-          placeholder="Location"
-          value={this.state.location}
-        />
+  style={styles.inputStyle}
+  placeholder="Location"
+  value={this.state.location}
+  onChangeText={(val) => this.updateInputVal(val, 'location')}
+/>
+
         <TouchableOpacity 
   style={styles.addButton}
   onPress={this.handleAddGame}
@@ -186,7 +188,9 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     padding: 35,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    marginTop: -40,
+    backgroundColor: '#FDF6EC',
   },
   inputStyle: {
     marginTop: 20,
@@ -208,8 +212,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff'
   },
   image: {
-    width: 350,
-    height: 200,
+    width: 300,
+    height: 130,
     resizeMode: 'cover',
     marginBottom: 10,
   },

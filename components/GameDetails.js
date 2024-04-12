@@ -14,6 +14,7 @@ export default class GameDetails extends Component {
   componentDidMount() {
     this.fetchGameDetails();
   }
+  
 
   fetchGameDetails = async () => {
     try {
@@ -25,7 +26,7 @@ export default class GameDetails extends Component {
         const gameData = gameSnapshot.data();
         const userId = gameData.userId;
   
-        // Fetch user details using userId
+       
         const userRef = firebase.firestore().collection('users').doc(userId);
         const userSnapshot = await userRef.get();
   
@@ -71,12 +72,12 @@ export default class GameDetails extends Component {
             <Image source={{ uri: game.image }} style={styles.gameImage} />
             <Text style={styles.gameName}>{game.name}</Text>
             <Text  style={styles.email}>{game.description}</Text>
-            <Text  style={styles.email}>Location: {game.location}</Text>
-            <Text  style={styles.email}>Genre: {game.type}</Text>
+            <Text  style={styles.email}><Text style={styles.coloredText}>Location:</Text> {game.location}</Text>
+            <Text  style={styles.email}><Text style={styles.coloredText}>Genre:</Text> {game.type}</Text>
             <TouchableOpacity onPress={this.handlePhoneNumberPress}>
-              <Text style={styles.phoneNumber}>Phone Number: {game.phoneNumber}</Text>
+              <Text style={styles.phoneNumber}><Text style={styles.coloredText}>Phone Number:</Text> {game.phoneNumber}</Text>
             </TouchableOpacity>
-            <Text style={styles.email}>User Email: {game.email}</Text>
+            <Text style={styles.email}><Text style={styles.coloredText}>User Email:</Text> {game.email}</Text>
           </View>
         ) : (
           <Text style={styles.noGameDataText}>No game data found.</Text>
@@ -91,14 +92,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#FDF6EC',
   },
   loadingContainer: {
-    backgroundColor: '#fff', 
+    backgroundColor: '#fff',
   },
   gameContainer: {
-    alignItems: 'center',
+    alignItems: 'center', 
     padding: 20,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOpacity: 0.5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 2,
   },
   gameImage: {
     width: 400,
@@ -108,10 +116,11 @@ const styles = StyleSheet.create({
     marginTop: -200,
   },
   gameName: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#fff', 
+    color: '#D70404', 
+    textAlign: 'center', 
     textDecorationLine: 'underline',
   },
   gameDetails: {
@@ -121,12 +130,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: 20,
-    color: 'blue',
+    color: 'black',
     textDecorationLine: 'underline',
   },
   email: {
+    fontWeight: 'bold',
     fontSize: 16,
     marginTop: 20,
+    color: '#000', 
+  },
+  coloredText: {
+    color: '#ECBE5C', 
   },
   noGameDataText: {
     fontSize: 18,

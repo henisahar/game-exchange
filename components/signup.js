@@ -4,10 +4,10 @@ import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import firebase from '../database/firebase';
-import { getFirestore, collection, addDoc, updateDoc, doc, firestore } from 'firebase/firestore';
+
 import * as ImagePicker from 'expo-image-picker';
 import 'firebase/storage';
-import { Picker } from '@react-native-picker/picker';
+
 import RNPickerSelect from 'react-native-picker-select';
 
 export default class Signup extends Component {
@@ -19,8 +19,8 @@ export default class Signup extends Component {
       password: '',
       phoneNumber: '',
       imageUri: null,
-      selectedGames: [], // Initially empty array for selected games
-      userState: '', // New state variable to hold the user's state
+      selectedGames: [], 
+      userState: '', 
       isLoading: false
     };
     this.storage = getStorage();
@@ -29,7 +29,7 @@ export default class Signup extends Component {
   updateInputVal = (val, prop) => {
     if (prop === 'selectedGames') {
       this.setState((prevState) => ({
-        [prop]: [...prevState.selectedGames, val], // Add the selected game to the array
+        [prop]: [...prevState.selectedGames, val], 
       }));
     } else {
       this.setState({ [prop]: val });
@@ -88,7 +88,7 @@ export default class Signup extends Component {
           phoneNumber: phoneNumber,
           imageUrl: imageUrl,
           selectedGames: selectedGames,
-          userState: userState, // Include user's state in the userData
+          userState: userState, 
         };
 
         await this.saveUserDataToFirestore(user.uid, userData);
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     padding: 35,
-    backgroundColor: '#fff'
+    backgroundColor: '#FDF6EC',
   },
   loginContainer: {
     flexDirection: 'row',
@@ -220,14 +220,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   registeredText: {
-    color: '#000000', // Black color
+    color: '#000000', 
     marginTop: 25,
     textAlign: 'center'
   },
 
   selectButton: {
-    borderRadius: 20, // Adjust the value as needed to control the curvature
-    backgroundColor: '#FF0000', // Change the background color of the button
+    borderRadius: 20, 
+    backgroundColor: '#FF0000', 
   },
   
   imageContainer: {
@@ -255,10 +255,10 @@ const styles = StyleSheet.create({
   registerNowText: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#FF0000', // Change the color to your desired color
+    color: '#FF0000', 
    
-    marginBottom: 40, // Adjust the spacing from the top
-    textDecorationLine: 'underline', // Underline the text
+    marginBottom: 40, 
+    textDecorationLine: 'underline', 
   },
 
   preloader: {

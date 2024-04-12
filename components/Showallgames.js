@@ -29,14 +29,14 @@ class ShowAllGames extends Component {
     return gamesRef.onSnapshot((querySnapshot) => {
       const games = [];
       querySnapshot.forEach((doc) => {
-        const { name, description, image, location, genre, phoneNumber } = doc.data();
+        const { name, description, image, location, type, phoneNumber } = doc.data();
         games.push({
           id: doc.id,
           name,
           description,
           image,
           location,
-          genre,
+          type,
           phoneNumber
         });
       });
@@ -77,7 +77,7 @@ class ShowAllGames extends Component {
 
     let filteredGames = games.filter(game => {
       return game.name.toLowerCase().includes(filterName.toLowerCase()) &&
-             (filterGenre === '' || game.genre === filterGenre);
+             (filterGenre === '' || game.type === filterGenre);
     });
 
     if (isLoading) {
@@ -106,7 +106,7 @@ class ShowAllGames extends Component {
             <Picker.Item label="Action" value="action" />
             <Picker.Item label="video_games" value="video_games" />
             <Picker.Item label="carte" value="carte" />
-            {/* Add more genres as needed */}
+           
           </Picker>
         </View>
         {filteredGames.length > 0 ? (
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#FDF6EC',
     paddingVertical: 20,
   },
   loadingContainer: {
