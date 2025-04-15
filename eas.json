@@ -1,9 +1,10 @@
 {
   "build": {
     "android": {
-      "release": {
+      "production": {
         "buildType": "apk"
       }
     }
   }
 }
+
