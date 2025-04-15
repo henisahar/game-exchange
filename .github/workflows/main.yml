@@ -31,7 +31,7 @@ jobs:
       - name: Install EAS CLI
         run: npm install -g eas-cli
 
-      - name: Log in to Expo
+      - name: Log in to Expo cli
         run: eas login --token ${{ secrets.EXPO_TOKEN }}
 
       - name: Build APK with Expo
