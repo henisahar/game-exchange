@@ -3,8 +3,10 @@
     "android": {
       "production": {
         "buildType": "apk"
+      },
+      "development": {
+        "buildType": "apk"
       }
     }
   }
 }
-
