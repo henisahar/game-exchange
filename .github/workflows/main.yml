@@ -27,3 +27,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Install EAS CLI
+        run: npm install -g eas-cli
+
+      - name: Log in to Expo
+        run: eas login --token ${{ secrets.EXPO_TOKEN }}
+
+      - name: Build APK with Expo
+        run: eas build --platform android --profile production --non-interactive
