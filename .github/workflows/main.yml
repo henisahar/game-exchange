@@ -22,7 +22,7 @@ jobs:
 
       - name: Patch deprecated compile() in firebase analytics
         run: |
-          sed -i 's/compile(/implementation(/g' node_modules/react-native-firebase-analytics/android/build.gradle
+          sed -i -E "s/\bcompile\b/implementation/g" node_modules/react-native-firebase-analytics/android/build.gradle
 
       - name: Initialize EAS Project
         run: eas init --non-interactive --id c24319d4-689b-4401-8941-1d62827e6c81
