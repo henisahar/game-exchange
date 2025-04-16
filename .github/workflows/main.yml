@@ -1,37 +1,29 @@
-name: Simple Node Setup
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+name: EAS Build Android
+on: push
 
 jobs:
-  install-dependencies:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-
-      - name: Install npm dependencies
-        run: npm install
-
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+          node-version: 18.x
 
       - name: Install EAS CLI
-        run: npm install -g eas-cli
+        run: npm install -g eas-cli@latest
 
-      - name: Build Android APK with EAS
+      - name: Install project dependencies
+        run: npm install
+
+      - name: Initialize EAS Project
+        run: eas init --non-interactive --id c24319d4-689b-4401-8941-1d62827e6c81
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Run EAS Build
         run: eas build --platform android --profile production --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}

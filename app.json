@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c24319d4-689b-4401-8941-1d62827e6c81"
+      }
+    },
+    "owner": "saharheni"
   }
 }
