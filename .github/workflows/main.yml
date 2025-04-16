@@ -1,4 +1,4 @@
-name: EAS Build Android
+name: EAS Buuild Android
 on: push
 
 jobs:
